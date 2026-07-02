@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Untuk Muara Kelana 💗</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{
@@ -64,6 +65,10 @@ height:4px;background:#eee;
 height:100%;background:linear-gradient(90deg,#667eea,#764ba2);
 transition:width 0.3s ease;
 }
+#qrcode{
+background:white;padding:20px;border-radius:15px;display:inline-block;
+margin:30px 0;box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
 </style>
 </head>
 <body>
@@ -76,8 +81,9 @@ transition:width 0.3s ease;
   <div class="slide active">
     <div>
       <h1>✨ Haii Muna ✨</h1>
-      <p style="font-size:18px;margin:30px 0;">Ini Ada Sedikit Pesan Dari Azka 💗</p>
-      <p style="color:#999;">Ini Buat Muna Doang Ya Tapi 🤫</p>
+      <p style="font-size:18px;margin:30px 0;">Scan QR Code Ini Ya! 💗</p>
+      <div id="qrcode"></div>
+      <p style="color:#999;font-size:14px;">Atau klik tombol "Buka Slideshow" di bawah</p>
     </div>
   </div>
 
@@ -173,6 +179,16 @@ function prevSlide(){
 document.addEventListener("keydown", (e) => {
   if(e.key === "ArrowRight") nextSlide();
   if(e.key === "ArrowLeft") prevSlide();
+});
+
+// Generate QR Code
+new QRCode(document.getElementById("qrcode"), {
+  text: "https://raw.githubusercontent.com/Zk525-sttro/untukmuara/main/index.html",
+  width: 250,
+  height: 250,
+  colorDark: "#764ba2",
+  colorLight: "#ffffff",
+  correctLevel: QRCode.CorrectLevel.H
 });
 
 updateProgress();
